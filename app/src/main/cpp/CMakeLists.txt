@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.22.1)
 
 project("fusefixer")
 
-set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -Wl,--exclude-libs,ALL -Wl,-z,start-stop-visibility=hidden -Wl,--gc-sections")
+set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -Wl,--exclude-libs,ALL -Wl,-z,start-stop-visibility=hidden -Wl,--gc-sections -Wl,-z,max-page-size=16384")
 
 add_library(${CMAKE_PROJECT_NAME} SHARED fusefixer.cpp)
 

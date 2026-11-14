@@ -31,6 +31,8 @@ val keystoreProperties = if (keystorePropertiesFile.exists() && keystoreProperti
 
 android {
     namespace = "io.github.a13e300.fusefixer"
+    // NDK r28+ links with 16 KB page alignment by default (required on 16 KB page-size devices)
+    ndkVersion = "28.2.13676358"
     compileSdk {
         version = release(36)
     }
@@ -50,6 +52,7 @@ android {
             cmake {
                 arguments += "-DANDROID_STL=c++_static"
                 arguments += "-DCMAKE_CXX_STANDARD=20"
+                arguments += "-DANDROID_SUPPORT_FLEXIBLE_PAGE_SIZES=ON"
                 cppFlags(
                     "-fno-rtti", "-fno-exceptions",
                     "-ffunction-sections", "-fdata-sections",
